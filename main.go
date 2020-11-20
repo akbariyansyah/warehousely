@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"warehousely/config"
 	"warehousely/config/database/postgres"
+	"warehousely/router"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,13 +12,11 @@ import (
 func main() {
 	// set up environment variable
 	config.SetEnvironmentVariable()
-	db := postgres.InitPostgresDatabase()
-	fmt.Println(db)
 
+	db := postgres.InitPostgresDatabase()
 	g := gin.Default()
-	g.GET("/", func(c *gin.Context) {
-		c.JSON(200, "Hello There")
-	})
+
+	router.InitRouter(g, db)
 
 	source := fmt.Sprintf("%s:%s", config.MAIN_SERVER_HOST, config.MAIN_SERVER_PORT)
 	g.Run(source)
