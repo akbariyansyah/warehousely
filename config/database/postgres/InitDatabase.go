@@ -7,6 +7,7 @@ import (
 	"github.com/go-pg/pg"
 )
 
+// https://pg.uptrace.dev/ <- dokumentasinya
 // untuk init database postgree
 func InitPostgresDatabase() *pg.DB {
 	db := pg.Connect(&pg.Options{

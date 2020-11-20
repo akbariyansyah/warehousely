@@ -22,5 +22,5 @@ func SetEnvironmentVariable() {
 	DB_PORT = "5432"
 	DB_NAME = "default"
 
-	log.Println("-------------------------------------------------------------")
+	log.Println("-------------------------------------------")
 }
