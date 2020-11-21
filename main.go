@@ -14,7 +14,7 @@ func main() {
 	config.SetEnvironmentVariable()
 
 	db := postgres.InitPostgresDatabase()
-	g := gin.Default()
+	g := gin.New()
 
 	router.InitRouter(g, db)
 
