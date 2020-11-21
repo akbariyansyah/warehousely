@@ -20,18 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e25703db-89a8-44de-be50-b3c28b2c5c08" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/domain/goods/goods_controllers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/goods/goods_model.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/goods/goods_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/goods/goods_routes.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/goods/goods_usecase.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/users/users_controllers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/users/users_model.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/users/users_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/users/users_routes.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/domain/users/users_usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_controllers.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_controllers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_model.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/environmentVariable.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/environmentVariable.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +42,11 @@
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="backend" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
@@ -107,26 +107,27 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1605884535293">
+    <state width="1493" height="366" key="GridCell.Tab.0.bottom" timestamp="1605953243787">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605884535293" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1605884535293">
+    <state width="1493" height="366" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605953243787" />
+    <state width="1493" height="366" key="GridCell.Tab.0.center" timestamp="1605953243786">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1605884535293" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1605884535292">
+    <state width="1493" height="366" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1605953243786" />
+    <state width="1493" height="366" key="GridCell.Tab.0.left" timestamp="1605953243786">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1605884535292" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1605884535293">
+    <state width="1493" height="366" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1605953243786" />
+    <state width="1493" height="366" key="GridCell.Tab.0.right" timestamp="1605953243786">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1605884535293" />
+    <state width="1493" height="366" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1605953243786" />
   </component>
 </project>

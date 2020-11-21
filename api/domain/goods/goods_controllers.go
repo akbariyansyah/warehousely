@@ -2,17 +2,17 @@ package goods
 
 import (
 	"github.com/go-pg/pg"
+	"log"
 
 	"github.com/gin-gonic/gin"
 )
 
 type GoodsController struct {
-	// goodsUsecase GoodsUsecaseInterface
+	goodsUsecase GoodsUsecaseInterface
 }
 
 func NewGoodsController(db *pg.DB) *GoodsController {
-	// return &GoodsController{NewGoodsUsecase(db)}
-	return &GoodsController{}
+	return &GoodsController{goodsUsecase: NewGoodsUsecase(db)}
 }
 
 func (u *GoodsController) HandleGetAllGoods(c *gin.Context) {
@@ -20,5 +20,17 @@ func (u *GoodsController) HandleGetAllGoods(c *gin.Context) {
 }
 
 func (u *GoodsController) HandlePostNewGoods(c *gin.Context) {
-	c.JSON(200, "Post New Goods There")
+	var goods Goods
+	err := c.BindJSON(&goods)
+	if err != nil {
+		log.Println(err)
+		c.JSON(500, "Oops there was an error")
+	}
+	err = u.goodsUsecase.CreateGoods(&goods)
+	if err != nil {
+		log.Println(err)
+		c.JSON(501, "Oops there was an error")
+	} else {
+		c.JSON(200, "Create Goods success")
+	}
 }
