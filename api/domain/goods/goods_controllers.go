@@ -16,7 +16,18 @@ func NewGoodsController(db *pg.DB) *GoodsController {
 }
 
 func (u *GoodsController) HandleGetAllGoods(c *gin.Context) {
-	c.JSON(200, "Get All Goods There")
+
+	result, err := u.goodsUsecase.GetAllGoods("1")
+	if err != nil {
+		c.JSON(400, "Failed")
+	} else {
+		c.JSON(200, gin.H{
+			"code":   200,
+			"status": "ok",
+			"data":   result,
+		})
+	}
+
 }
 
 func (u *GoodsController) HandlePostNewGoods(c *gin.Context) {
@@ -32,5 +43,27 @@ func (u *GoodsController) HandlePostNewGoods(c *gin.Context) {
 		c.JSON(501, "Oops there was an error")
 	} else {
 		c.JSON(200, "Create Goods success")
+	}
+}
+func (u *GoodsController) HandleDeleteGoods(c *gin.Context) {
+	id := c.Param("id")
+
+	err := u.goodsUsecase.DeleteGoods(id)
+	if err != nil {
+		log.Println(err)
+		c.JSON(501, "Oops there was an error")
+	} else {
+		c.JSON(200, "Delete Goods success")
+	}
+}
+func (u *GoodsController) HandlePutGoods(c *gin.Context) {
+	var goods Goods
+	_ = c.BindJSON(&goods)
+	err := u.goodsUsecase.UpdateGoods(&goods)
+	if err != nil {
+		log.Println(err)
+		c.JSON(501, "Oops there was an error")
+	} else {
+		c.JSON(200, "Change Goods success")
 	}
 }

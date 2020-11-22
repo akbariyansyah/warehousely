@@ -22,11 +22,10 @@
     <list default="true" id="e25703db-89a8-44de-be50-b3c28b2c5c08" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_controllers.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_controllers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_model.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_model.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_routes.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/domain/goods/goods_usecase.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/domain/goods/goods_usecase.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/environmentVariable.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/environmentVariable.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

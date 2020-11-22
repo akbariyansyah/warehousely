@@ -15,4 +15,6 @@ func InitGoodsRoutes(mainRoute string, g *gin.Engine, db *pg.DB) {
 
 	//http://localhost:8080/goods
 	r.POST("", goodsController.HandlePostNewGoods)
+	r.PUT("", goodsController.HandlePutGoods)
+	r.DELETE("/:id", goodsController.HandleDeleteGoods)
 }
