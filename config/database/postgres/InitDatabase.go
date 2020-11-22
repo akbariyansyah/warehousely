@@ -21,8 +21,9 @@ func InitPostgresDatabase() *pg.DB {
 	// untuk cek database bisa konek atau tidak
 	_, err := db.ExecContext(context.Background(), "SELECT 1")
 	if err != nil {
-		// panic(err)
-		log.Println(`Cannot Connect to Database`)
+		log.Println(`Cannot Connect to Database ->`, err.Error())
+	} else {
+		log.Println(`Successful connect to Database`)
 	}
 
 	return db
