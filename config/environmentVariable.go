@@ -2,30 +2,40 @@ package config
 
 import (
 	"log"
+	"os"
 )
 
-var MAIN_SERVER_HOST,
-	MAIN_SERVER_PORT,
+var HOST,
+	PORT,
 	DB_USER,
 	DB_PASSWORD,
 	DB_HOST,
 	DB_PORT,
-	DB_NAME string
+	DB_NAME,
+	DATABASE_URL string
 
 func SetEnvironmentVariable() {
-	MAIN_SERVER_HOST = "0.0.0.0"
-	MAIN_SERVER_PORT = "8080"
+	HOST = os.Getenv("HOST")
 
-	//DB_USER = "postgres"
-	//DB_PASSWORD = "P@ssW02d123"
-	//DB_HOST = "127.0.0.1"
-	//DB_PORT = "5432"
-	//DB_NAME = "warehousely"
+	if PORT = os.Getenv("PORT"); PORT == "" {
+		PORT = "8000" // Set up default value kalau tidak di set
+	}
 
-	DB_USER = "root"
-	DB_PASSWORD = "admin"
-	DB_HOST = "127.0.0.1"
-	DB_PORT = "5432"
-	DB_NAME = "default"
-	log.Println("-------------------------------------------")
+	DB_USER = os.Getenv("DB_USER")
+	DB_PASSWORD = os.Getenv("DB_PASSWORD")
+	DB_HOST = os.Getenv("DB_HOST")
+	DB_PORT = os.Getenv("DB_PORT")
+	DB_NAME = os.Getenv("DB_NAME")
+	DATABASE_URL = os.Getenv("DATABASE_URL")
+
+	log.Println("---------> SET UP ENVIRONMENT VARIABLES <---------")
+	log.Println(`HOST =`, HOST)
+	log.Println(`PORT =`, PORT)
+	log.Println(`DB_USER =`, DB_USER)
+	log.Println(`DB_PASSWORD =`, DB_PASSWORD)
+	log.Println(`DB_HOST =`, DB_HOST)
+	log.Println(`DB_PORT =`, DB_PORT)
+	log.Println(`DB_NAME =`, DB_NAME)
+	log.Println(`DATABASE_URL =`, DATABASE_URL)
+	log.Println("--------------------------------------------------")
 }
