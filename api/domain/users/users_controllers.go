@@ -14,9 +14,33 @@ func NewUserController(db *pg.DB) *UserController {
 }
 
 func (u *UserController) HandleUserLogin(c *gin.Context) {
-	c.JSON(200, "Login There")
+	user := new(User)
+	if err := c.Bind(user); err != nil {
+		c.JSON(400, err.Error())
+		return
+	}
+
+	result, err := u.UserUsecase.HandleUserLogin(user)
+	if err != nil {
+		c.JSON(400, err.Error())
+		return
+	}
+
+	c.JSON(201, result)
 }
 
 func (u *UserController) HandleUserRegister(c *gin.Context) {
-	c.JSON(200, "Register There")
+	user := new(User)
+	if err := c.Bind(user); err != nil {
+		c.JSON(400, err.Error())
+		return
+	}
+
+	result, err := u.UserUsecase.HandleUserRegister(user)
+	if err != nil {
+		c.JSON(400, err.Error())
+		return
+	}
+
+	c.JSON(201, result)
 }

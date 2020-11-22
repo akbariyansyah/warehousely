@@ -10,8 +10,8 @@ func InitUserRoutes(mainRoute string, g *gin.Engine, db *pg.DB) {
 	userController := NewUserController(db)
 
 	//http://localhost:8080/users/login
-	r.GET("/login", userController.HandleUserLogin)
+	r.POST("/login", userController.HandleUserLogin)
 
 	//http://localhost:8080/users/register
-	r.GET("/register", userController.HandleUserRegister)
+	r.POST("/register", userController.HandleUserRegister)
 }
