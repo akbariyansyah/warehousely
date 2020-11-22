@@ -14,7 +14,7 @@ var MAIN_SERVER_HOST,
 	DB_NAME string
 
 func SetEnvironmentVariable() {
-	MAIN_SERVER_HOST = "0.0.0.0"
+	MAIN_SERVER_HOST = "127.0.0.1"
 	PORT = os.Getenv(PORT)
 	if PORT == "" {
 		PORT = "8000"

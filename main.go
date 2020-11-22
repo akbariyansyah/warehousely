@@ -15,6 +15,7 @@ func main() {
 
 	db := postgres.InitPostgresDatabase()
 	g := gin.New()
+	gin.SetMode(gin.ReleaseMode)
 
 	router.InitRouter(g, db)
 
