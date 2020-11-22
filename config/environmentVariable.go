@@ -11,20 +11,22 @@ var HOST,
 	DB_PASSWORD,
 	DB_HOST,
 	DB_PORT,
-	DB_NAME string
+	DB_NAME,
+	DATABASE_URL string
 
 func SetEnvironmentVariable() {
 	HOST = os.Getenv("HOST")
 
 	if PORT = os.Getenv("PORT"); PORT == "" {
-		PORT = "8000" // Set up default value
+		PORT = "8000" // Set up default value kalau tidak di set
 	}
 
-	DB_USER = "root"
-	DB_PASSWORD = "admin"
-	DB_HOST = "127.0.0.1"
-	DB_PORT = "5432"
-	DB_NAME = "default"
+	DB_USER = os.Getenv("DB_USER")
+	DB_PASSWORD = os.Getenv("DB_PASSWORD")
+	DB_HOST = os.Getenv("DB_HOST")
+	DB_PORT = os.Getenv("DB_PORT")
+	DB_NAME = os.Getenv("DB_NAME")
+	DATABASE_URL = os.Getenv("DATABASE_URL")
 
 	log.Println("---------> SET UP ENVIRONMENT VARIABLES <---------")
 	log.Println(`HOST =`, HOST)
@@ -34,5 +36,6 @@ func SetEnvironmentVariable() {
 	log.Println(`DB_HOST =`, DB_HOST)
 	log.Println(`DB_PORT =`, DB_PORT)
 	log.Println(`DB_NAME =`, DB_NAME)
+	log.Println(`DATABASE_URL =`, DATABASE_URL)
 	log.Println("--------------------------------------------------")
 }
