@@ -6,7 +6,7 @@ import (
 )
 
 var MAIN_SERVER_HOST,
-	MAIN_SERVER_PORT,
+	PORT,
 	DB_USER,
 	DB_PASSWORD,
 	DB_HOST,
@@ -15,9 +15,9 @@ var MAIN_SERVER_HOST,
 
 func SetEnvironmentVariable() {
 	MAIN_SERVER_HOST = "0.0.0.0"
-	MAIN_SERVER_PORT = os.Getenv(MAIN_SERVER_PORT)
-	if MAIN_SERVER_PORT == "" {
-		MAIN_SERVER_PORT = "8000"
+	PORT = os.Getenv(PORT)
+	if PORT == "" {
+		PORT = "8000"
 	}
 
 	// DB_USER = "postgres"

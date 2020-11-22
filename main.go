@@ -18,6 +18,6 @@ func main() {
 
 	router.InitRouter(g, db)
 
-	source := fmt.Sprintf("%s:%s", config.MAIN_SERVER_HOST, config.MAIN_SERVER_PORT)
+	source := fmt.Sprintf("%s:%s", config.MAIN_SERVER_HOST, config.PORT)
 	g.Run(source)
 }
