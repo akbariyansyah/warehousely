@@ -2,6 +2,7 @@ package config
 
 import (
 	"log"
+	"os"
 )
 
 var MAIN_SERVER_HOST,
@@ -14,7 +15,10 @@ var MAIN_SERVER_HOST,
 
 func SetEnvironmentVariable() {
 	MAIN_SERVER_HOST = "0.0.0.0"
-	MAIN_SERVER_PORT = "8080"
+	MAIN_SERVER_PORT = os.Getenv(MAIN_SERVER_PORT)
+	if MAIN_SERVER_PORT == "" {
+		MAIN_SERVER_PORT = "8000"
+	}
 
 	// DB_USER = "postgres"
 	// DB_PASSWORD = "P@ssW02d123"
