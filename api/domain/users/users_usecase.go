@@ -1,14 +1,62 @@
 package users
 
-import "github.com/go-pg/pg"
+import (
+	"errors"
+	"log"
+
+	"golang.org/x/crypto/bcrypt"
+
+	"github.com/go-pg/pg"
+)
 
 type UserUsecase struct {
 	UserRepository UserRepositoryInterface
 }
 
 type UserUsecaseInterface interface {
+	HandleUserLogin(user *User) (*User, error)
+	HandleUserRegister(user *User) (*User, error)
 }
 
 func NewUserUsecase(db *pg.DB) UserUsecaseInterface {
 	return &UserUsecase{NewUserRepository(db)}
+}
+
+func (u *UserUsecase) HandleUserLogin(user *User) (*User, error) {
+	result, err := u.UserRepository.HandleUserLogin(user.Username, true)
+	if err != nil {
+		log.Println(err.Error())
+		return nil, err
+	}
+
+	// membandingkan user input (user.password) dengan password yang ada di db (result.password)
+	err = bcrypt.CompareHashAndPassword([]byte(result.Password), []byte(user.Password))
+	if err != nil {
+		log.Println(err.Error())
+		return nil, errors.New("Username atau Password salah")
+	}
+
+	log.Println(`User Login ->`, result.Username)
+
+	result.Password = ""
+	return result, nil
+}
+
+func (u *UserUsecase) HandleUserRegister(user *User) (*User, error) {
+	hash, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+	if err != nil {
+		log.Println(err.Error())
+		return nil, err
+	}
+
+	user.Password = string(hash)
+	result, err := u.UserRepository.HandleUserRegister(user)
+	if err != nil {
+		log.Println(err)
+		return nil, err
+	}
+
+	log.Println(`User Register ->`, result.Username)
+
+	return result, nil
 }
