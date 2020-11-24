@@ -28,6 +28,9 @@ func SetEnvironmentVariable() {
 	DB_NAME = os.Getenv("DB_NAME")
 	DATABASE_URL = os.Getenv("DATABASE_URL")
 
+	// hardcode dlu hehehe
+	DATABASE_URL = "postgres://dhopkyohgphwba:c1635497d128cb0658789be8531315041c2cfbbd4b5dfa426e46342140636636@ec2-52-3-4-232.compute-1.amazonaws.com:5432/d6hjiv7dbbhoci"
+
 	log.Println("---------> SET UP ENVIRONMENT VARIABLES <---------")
 	log.Println(`HOST =`, HOST)
 	log.Println(`PORT =`, PORT)

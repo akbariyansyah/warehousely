@@ -14,4 +14,6 @@ func InitUserRoutes(mainRoute string, g *gin.Engine, db *pg.DB) {
 
 	//http://localhost:8080/users/register
 	r.POST("/register", userController.HandleUserRegister)
+
+	r.DELETE("/:id", userController.HandleDeleteUser)
 }
