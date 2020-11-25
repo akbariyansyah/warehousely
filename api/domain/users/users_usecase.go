@@ -24,6 +24,10 @@ func NewUserUsecase(db *pg.DB) UserUsecaseInterface {
 }
 
 func (u *UserUsecase) HandleUserLogin(user *User) (*User, error) {
+	if user.Username == "" || user.Password == "" {
+		return nil, errors.New(`Username or Password cannot empty`)
+	}
+
 	result, err := u.UserRepository.HandleUserLogin(user.Username, true)
 	if err != nil {
 		log.Println(err.Error())
@@ -44,6 +48,10 @@ func (u *UserUsecase) HandleUserLogin(user *User) (*User, error) {
 }
 
 func (u *UserUsecase) HandleUserRegister(user *User) (*User, error) {
+	if user.Username == "" || user.Password == "" || user.Email == "" {
+		return nil, errors.New(`Username or Password cannot empty`)
+	}
+
 	hash, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {
 		log.Println(err.Error())
