@@ -44,3 +44,14 @@ func (u *UserController) HandleUserRegister(c *gin.Context) {
 
 	c.JSON(201, result)
 }
+
+func (u *UserController) HandleDeleteUser(c *gin.Context) {
+	id := c.Param("id")
+	err := u.UserUsecase.HandleDeleteUser(id)
+	if err != nil {
+		c.JSON(400, err.Error())
+		return
+	}
+
+	c.JSON(201, "Delete User with ID "+id+" Success")
+}

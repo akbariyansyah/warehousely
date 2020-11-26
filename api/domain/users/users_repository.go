@@ -11,6 +11,7 @@ type UserRepository struct {
 type UserRepositoryInterface interface {
 	HandleUserLogin(username string, status bool) (*User, error)
 	HandleUserRegister(user *User) (*User, error)
+	HandleDeleteUser(id string) error
 }
 
 func NewUserRepository(db *pg.DB) UserRepositoryInterface {
@@ -48,4 +49,25 @@ func (u *UserRepository) HandleUserLogin(username string, status bool) (*User, e
 	}
 
 	return user, nil
+}
+
+func (u *UserRepository) HandleDeleteUser(id string) error {
+	tx, err := u.db.Begin()
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback()
+
+	statement, err := tx.Prepare(`UPDATE m_user SET status = false WHERE id = $1`)
+	if err != nil {
+		return err
+	}
+
+	_, err = statement.Exec(id)
+	if err != nil {
+		return err
+	}
+
+	tx.Commit()
+	return nil
 }

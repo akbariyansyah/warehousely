@@ -16,6 +16,7 @@ type UserUsecase struct {
 type UserUsecaseInterface interface {
 	HandleUserLogin(user *User) (*User, error)
 	HandleUserRegister(user *User) (*User, error)
+	HandleDeleteUser(id string) error
 }
 
 func NewUserUsecase(db *pg.DB) UserUsecaseInterface {
@@ -59,4 +60,16 @@ func (u *UserUsecase) HandleUserRegister(user *User) (*User, error) {
 	log.Println(`User Register ->`, result.Username)
 
 	return result, nil
+}
+
+func (u *UserUsecase) HandleDeleteUser(id string) error {
+	err := u.UserRepository.HandleDeleteUser(id)
+	if err != nil {
+		log.Println(err.Error())
+		return err
+	}
+
+	log.Println(`Delete User id ->`, id)
+
+	return nil
 }
