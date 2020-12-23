@@ -4,7 +4,7 @@ import (
 	"github.com/go-pg/pg"
 )
 
-type UserRepository struct {
+type userRepository struct {
 	db *pg.DB
 }
 
@@ -14,11 +14,11 @@ type UserRepositoryInterface interface {
 	HandleDeleteUser(id string) error
 }
 
-func NewUserRepository(db *pg.DB) UserRepositoryInterface {
-	return &UserRepository{db}
+func NewUserRepository(db *pg.DB) *userRepository {
+	return &userRepository{db}
 }
 
-func (u *UserRepository) HandleUserRegister(user *User) (*User, error) {
+func (u *userRepository) HandleUserRegister(user *User) (*User, error) {
 	tx, err := u.db.Begin()
 	if err != nil {
 		return nil, err
@@ -39,7 +39,7 @@ func (u *UserRepository) HandleUserRegister(user *User) (*User, error) {
 	return user, nil
 }
 
-func (u *UserRepository) HandleUserLogin(username string, status bool) (*User, error) {
+func (u *userRepository) HandleUserLogin(username string, status bool) (*User, error) {
 	user := new(User)
 
 	// ngambil satu data berdasarkan username dan status yang aktif
@@ -51,7 +51,7 @@ func (u *UserRepository) HandleUserLogin(username string, status bool) (*User, e
 	return user, nil
 }
 
-func (u *UserRepository) HandleDeleteUser(id string) error {
+func (u *userRepository) HandleDeleteUser(id string) error {
 	tx, err := u.db.Begin()
 	if err != nil {
 		return err

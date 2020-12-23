@@ -2,15 +2,14 @@ package users
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/go-pg/pg"
 )
 
 type UserController struct {
 	UserUsecase UserUsecaseInterface
 }
 
-func NewUserController(db *pg.DB) *UserController {
-	return &UserController{NewUserUsecase(db)}
+func NewUserController(usecase UserUsecaseInterface) *UserController {
+	return &UserController{UserUsecase: usecase}
 }
 
 func (u *UserController) HandleUserLogin(c *gin.Context) {

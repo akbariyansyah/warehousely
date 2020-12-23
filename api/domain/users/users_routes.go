@@ -7,7 +7,11 @@ import (
 
 func InitUserRoutes(mainRoute string, g *gin.Engine, db *pg.DB) {
 	r := g.Group(mainRoute)
-	userController := NewUserController(db)
+
+	// Depedency Injection
+	userRepository := NewUserRepository(db)
+	userUsecase := NewUserUsecase(userRepository)
+	userController := NewUserController(userUsecase)
 
 	//http://localhost:8080/users/login
 	r.POST("/login", userController.HandleUserLogin)

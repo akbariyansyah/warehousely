@@ -5,11 +5,13 @@ import (
 	"log"
 
 	"golang.org/x/crypto/bcrypt"
-
-	"github.com/go-pg/pg"
 )
 
-type UserUsecase struct {
+func NewUserUsecase(repo UserRepositoryInterface) *userUsecase {
+	return &userUsecase{UserRepository: repo}
+}
+
+type userUsecase struct {
 	UserRepository UserRepositoryInterface
 }
 
@@ -19,11 +21,7 @@ type UserUsecaseInterface interface {
 	HandleDeleteUser(id string) error
 }
 
-func NewUserUsecase(db *pg.DB) UserUsecaseInterface {
-	return &UserUsecase{NewUserRepository(db)}
-}
-
-func (u *UserUsecase) HandleUserLogin(user *User) (*User, error) {
+func (u *userUsecase) HandleUserLogin(user *User) (*User, error) {
 	if user.Username == "" || user.Password == "" {
 		return nil, errors.New(`Username or Password cannot empty`)
 	}
@@ -47,7 +45,7 @@ func (u *UserUsecase) HandleUserLogin(user *User) (*User, error) {
 	return result, nil
 }
 
-func (u *UserUsecase) HandleUserRegister(user *User) (*User, error) {
+func (u *userUsecase) HandleUserRegister(user *User) (*User, error) {
 	if user.Username == "" || user.Password == "" || user.Email == "" {
 		return nil, errors.New(`Username or Password cannot empty`)
 	}
@@ -70,7 +68,7 @@ func (u *UserUsecase) HandleUserRegister(user *User) (*User, error) {
 	return result, nil
 }
 
-func (u *UserUsecase) HandleDeleteUser(id string) error {
+func (u *userUsecase) HandleDeleteUser(id string) error {
 	err := u.UserRepository.HandleDeleteUser(id)
 	if err != nil {
 		log.Println(err.Error())
